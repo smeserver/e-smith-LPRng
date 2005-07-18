@@ -1,0 +1,6 @@
+Index: e-smith-LPRng/e-smith-LPRng.spec
+diff -u /dev/null e-smith-LPRng/root/etc/e-smith/templates.metadata/etc/lpd/lpd.perms:1.1
+--- /dev/null	Thu Mar 17 12:14:29 2005
++++ e-smith-LPRng/root/etc/e-smith/templates.metadata/etc/lpd/lpd.perms	Thu Mar 17 12:14:01 2005
+@@ -0,0 +1 @@
++TEMPLATE_PATH="/etc/lpd.perms"

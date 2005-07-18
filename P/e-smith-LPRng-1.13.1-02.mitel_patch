@@ -1,0 +1,7 @@
+Index: e-smith-LPRng/e-smith-LPRng.spec
+diff -u /dev/null e-smith-LPRng/root/var/service/lpd/run:1.1
+--- /dev/null	Mon Dec 13 14:30:44 2004
++++ e-smith-LPRng/root/var/service/lpd/run	Mon Dec 13 14:29:26 2004
+@@ -0,0 +1,2 @@
++#! /bin/sh
++exec /usr/sbin/lpd -F
