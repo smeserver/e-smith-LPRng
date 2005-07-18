@@ -2,7 +2,7 @@ Summary: e-smith server and gateway - LPRng module
 %define name e-smith-LPRng
 Name: %{name}
 %define version 1.13.1
-%define release 09
+%define release 09sme01
 Version: %{version}
 Release: %{release}
 License: GPL
@@ -12,6 +12,7 @@ Source: %{name}-%{version}.tar.gz
 Patch0: e-smith-LPRng-1.13.1-02.mitel_patch
 Patch1: e-smith-LPRng-1.13.1-08.mitel_patch
 Patch2: e-smith-LPRng-1.13.1-09.mitel_patch
+Patch3: e-smith-LPRng-1.13.1-dbmoved.patch
 Packager: e-smith developers <bugs@e-smith.com>
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 Requires: e-smith-base, LPRng
@@ -24,6 +25,10 @@ e-smith server and gateway software - LPRng module.
 Add printing features, using the LPRng package.
 
 %changelog
+* Sun Jul 17 2005 Shad L. Lords <slords@mail.com>
+- [1.13.1-09sme01]
+- Updates for db move
+
 * Thu Mar 17 2005 Charlie Brady <charlieb@e-smith.com>
 - [1.13.1-09]
 - Add missing /etc/e-smith/template.metadata tree (which handles
@@ -450,6 +455,7 @@ mkdir -p root/etc/e-smith/web/panels/manager/cgi-bin \
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 perl createlinks
