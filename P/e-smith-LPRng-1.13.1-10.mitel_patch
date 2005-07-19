@@ -1,6 +1,7 @@
-diff -Nur -x '*.orig' -x '*.rej' e-smith-LPRng-1.13.1/root/etc/e-smith/events/actions/printer-create mezzanine_patched_e-smith-LPRng-1.13.1/root/etc/e-smith/events/actions/printer-create
---- e-smith-LPRng-1.13.1/root/etc/e-smith/events/actions/printer-create	2002-04-11 08:10:44.000000000 -0600
-+++ mezzanine_patched_e-smith-LPRng-1.13.1/root/etc/e-smith/events/actions/printer-create	2005-07-17 23:04:15.195959936 -0600
+Index: e-smith-LPRng/e-smith-LPRng.spec
+diff -u e-smith-LPRng/root/etc/e-smith/events/actions/printer-create:1.1.1.1 e-smith-LPRng/root/etc/e-smith/events/actions/printer-create:1.2
+--- e-smith-LPRng/root/etc/e-smith/events/actions/printer-create:1.1.1.1	Thu Apr 11 10:10:44 2002
++++ e-smith-LPRng/root/etc/e-smith/events/actions/printer-create	Tue Jul 19 17:33:46 2005
 @@ -30,8 +30,8 @@
  my %conf;
  tie %conf, 'esmith::config';
@@ -24,9 +25,10 @@ diff -Nur -x '*.orig' -x '*.rej' e-smith-LPRng-1.13.1/root/etc/e-smith/events/ac
  {
      die "Invalid printer $printerName; create printer failed.\n";
  }
-diff -Nur -x '*.orig' -x '*.rej' e-smith-LPRng-1.13.1/root/etc/e-smith/events/actions/printer-delete mezzanine_patched_e-smith-LPRng-1.13.1/root/etc/e-smith/events/actions/printer-delete
---- e-smith-LPRng-1.13.1/root/etc/e-smith/events/actions/printer-delete	2002-04-11 08:10:44.000000000 -0600
-+++ mezzanine_patched_e-smith-LPRng-1.13.1/root/etc/e-smith/events/actions/printer-delete	2005-07-17 23:04:32.757290208 -0600
+Index: e-smith-LPRng/root/etc/e-smith/events/actions/printer-delete
+diff -u e-smith-LPRng/root/etc/e-smith/events/actions/printer-delete:1.1.1.1 e-smith-LPRng/root/etc/e-smith/events/actions/printer-delete:1.2
+--- e-smith-LPRng/root/etc/e-smith/events/actions/printer-delete:1.1.1.1	Thu Apr 11 10:10:44 2002
++++ e-smith-LPRng/root/etc/e-smith/events/actions/printer-delete	Tue Jul 19 17:33:46 2005
 @@ -30,8 +30,8 @@
  my %conf;
  tie %conf, 'esmith::config';
@@ -51,9 +53,10 @@ diff -Nur -x '*.orig' -x '*.rej' e-smith-LPRng-1.13.1/root/etc/e-smith/events/ac
  
  system("/bin/rm", "-rf", "/var/spool/lpd/$printerName") == 0
      or die "Could not delete spool directory '/var/spool/lpd/$printerName';" .
-diff -Nur -x '*.orig' -x '*.rej' e-smith-LPRng-1.13.1/root/etc/e-smith/templates/etc/printcap/05printer mezzanine_patched_e-smith-LPRng-1.13.1/root/etc/e-smith/templates/etc/printcap/05printer
---- e-smith-LPRng-1.13.1/root/etc/e-smith/templates/etc/printcap/05printer	2002-04-11 08:10:44.000000000 -0600
-+++ mezzanine_patched_e-smith-LPRng-1.13.1/root/etc/e-smith/templates/etc/printcap/05printer	2005-07-17 23:00:52.359215480 -0600
+Index: e-smith-LPRng/root/etc/e-smith/templates/etc/printcap/05printer
+diff -u e-smith-LPRng/root/etc/e-smith/templates/etc/printcap/05printer:1.1.1.1 e-smith-LPRng/root/etc/e-smith/templates/etc/printcap/05printer:1.2
+--- e-smith-LPRng/root/etc/e-smith/templates/etc/printcap/05printer:1.1.1.1	Thu Apr 11 10:10:44 2002
++++ e-smith-LPRng/root/etc/e-smith/templates/etc/printcap/05printer	Tue Jul 19 17:33:46 2005
 @@ -1,35 +1,31 @@
  {
 -    use esmith::db
