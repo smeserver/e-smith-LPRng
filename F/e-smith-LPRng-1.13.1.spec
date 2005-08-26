@@ -2,7 +2,7 @@ Summary: e-smith server and gateway - LPRng module
 %define name e-smith-LPRng
 Name: %{name}
 %define version 1.13.1
-%define release 10
+%define release 11
 Version: %{version}
 Release: %{release}
 License: GPL
@@ -13,6 +13,7 @@ Patch0: e-smith-LPRng-1.13.1-02.mitel_patch
 Patch1: e-smith-LPRng-1.13.1-08.mitel_patch
 Patch2: e-smith-LPRng-1.13.1-09.mitel_patch
 Patch3: e-smith-LPRng-1.13.1-10.mitel_patch
+Patch4: e-smith-LPRng-1.13.1-11.mitel_patch
 Packager: e-smith developers <bugs@e-smith.com>
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 Requires: e-smith-base, LPRng
@@ -25,6 +26,11 @@ e-smith server and gateway software - LPRng module.
 Add printing features, using the LPRng package.
 
 %changelog
+* Fri Aug 26 2005 Charlie Brady <charlieb@e-smith.com>
+- [1.13.1-11]
+- Fix template expansion of /etc/printcap. [SF: 1273768]
+- Remove unused and deprecated code from printer-{create,delete}.
+
 * Tue Jul 19 2005 Charlie Brady <charlieb@e-smith.com>
 - [1.13.1-10]
 - Update to current db access APIs. Patch by Shad Lords. [SF: 1216546]
@@ -456,6 +462,7 @@ mkdir -p root/etc/e-smith/web/panels/manager/cgi-bin \
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 perl createlinks
