@@ -1,0 +1,41 @@
+Index: e-smith-LPRng/createlinks
+diff -u e-smith-LPRng/createlinks:1.6 e-smith-LPRng/createlinks:1.7
+--- e-smith-LPRng/createlinks:1.6	Wed Mar 16 21:09:34 2005
++++ e-smith-LPRng/createlinks	Wed Nov 16 23:40:47 2005
+@@ -17,7 +17,7 @@
+ 
+ event_link("printer-create", $event, "15");
+ templates2events("/etc/printcap", $event);
+-safe_symlink("sighup", "root/etc/e-smith/events/$event/services2adjust/lpd");
++safe_symlink("sigterm", "root/etc/e-smith/events/$event/services2adjust/lpd");
+ 
+ #--------------------------------------------------
+ # actions for printer-delete event
+@@ -27,7 +27,7 @@
+ 
+ event_link("printer-delete", $event, "15");
+ templates2events("/etc/printcap", $event);
+-safe_symlink("sighup", "root/etc/e-smith/events/$event/services2adjust/lpd");
++safe_symlink("sigterm", "root/etc/e-smith/events/$event/services2adjust/lpd");
+ 
+ #--------------------------------------------------
+ # actions for network-create event
+@@ -36,7 +36,7 @@
+ $event = "network-create";
+ 
+ templates2events("/etc/lpd/lpd.perms", $event);
+-safe_symlink("sighup", "root/etc/e-smith/events/$event/services2adjust/lpd");
++safe_symlink("sigterm", "root/etc/e-smith/events/$event/services2adjust/lpd");
+ 
+ #--------------------------------------------------
+ # actions for network-delete event
+@@ -45,7 +45,7 @@
+ $event = "network-delete";
+ 
+ templates2events("/etc/lpd/lpd.perms", $event);
+-safe_symlink("sighup", "root/etc/e-smith/events/$event/services2adjust/lpd");
++safe_symlink("sigterm", "root/etc/e-smith/events/$event/services2adjust/lpd");
+ 
+ #--------------------------------------------------
+ # actions for bootstrap-console-save event
+Index: e-smith-LPRng/e-smith-LPRng.spec

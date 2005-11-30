@@ -1,19 +1,16 @@
 Summary: e-smith server and gateway - LPRng module
 %define name e-smith-LPRng
 Name: %{name}
-%define version 1.13.1
-%define release 11
+%define version 1.13.3
+%define release 04
 Version: %{version}
 Release: %{release}
 License: GPL
 Vendor: Mitel Networks Corporation
 Group: Networking/Daemons
 Source: %{name}-%{version}.tar.gz
-Patch0: e-smith-LPRng-1.13.1-02.mitel_patch
-Patch1: e-smith-LPRng-1.13.1-08.mitel_patch
-Patch2: e-smith-LPRng-1.13.1-09.mitel_patch
-Patch3: e-smith-LPRng-1.13.1-10.mitel_patch
-Patch4: e-smith-LPRng-1.13.1-11.mitel_patch
+Patch0: e-smith-LPRng-1.13.3-02.mitel_patch
+Patch1: e-smith-LPRng-1.13.3-04.mitel_patch
 Packager: e-smith developers <bugs@e-smith.com>
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 Requires: e-smith-base, LPRng
@@ -26,6 +23,38 @@ e-smith server and gateway software - LPRng module.
 Add printing features, using the LPRng package.
 
 %changelog
+* Mon Nov 21 2005 Charlie Brady <charlieb@e-smith.com>
+- [1.13.3-04]
+- Add /etc/atalk/papd.conf/20printers template (moved from e-smith-netatalk).
+  [SF: 1361338]
+
+* Mon Nov 21 2005 Charlie Brady <charlieb@e-smith.com>
+- [1.13.3-03]
+- Fix spec file formatting error, resulting in last patch being omitted.
+  Move service startup symlink creation into createlinks script.
+  [SF: 1362872]
+
+* Wed Nov 16 2005 Charlie Brady <charlieb@e-smith.com>
+- [1.13.3-02]
+- Use sigterm to reconfigure lpd, since sighup doesn't seem to work reliably.
+  [SF: 1358283]
+
+* Fri Oct 14 2005 Gordon Rowell <gordonr@e-smith.com>
+- [1.13.3-01]
+- Remove L10Ns from base packages [SF: 1309520]
+
+* Fri Oct 14 2005 Gordon Rowell <gordonr@e-smith.com>
+- [1.13.2-01]
+- New dev stream before relocating L10Ns
+
+* Fri Sep 30 2005 Gordon Rowell <gordonr@e-smith.com>
+- [1.13.1-13]
+- Added Italian L10N - Thanks Filippo Carletti [SF: 1309266]
+
+* Mon Sep 26 2005 Gordon Rowell <gordonr@e-smith.com>
+- [1.13.1-12]
+- Added German L10N - Thanks Dietmar Berteld [SF: 1293325]
+
 * Fri Aug 26 2005 Charlie Brady <charlieb@e-smith.com>
 - [1.13.1-11]
 - Fix template expansion of /etc/printcap. [SF: 1273768]
@@ -453,26 +482,12 @@ Add printing features, using the LPRng package.
 
 %prep
 %setup
-mkdir -p root/etc/e-smith/web/panels/manager/cgi-bin \
-	root/etc/e-smith/events/printer-{create,delete} \
-	root/etc/e-smith/events/network-{create,delete} \
-	root/etc/e-smith/events/post-upgrade \
-	root/etc/e-smith/events/bootstrap-console-save \
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
 
 %build
 perl createlinks
 /sbin/e-smith/buildtests 30e-smith-LPRng
-mkdir -p root/etc/rc.d/init.d/supervise
-ln -s ../daemontools root/etc/rc.d/init.d/supervise/lpd
-mkdir -p root/etc/rc.d/rc7.d
-ln -s /etc/rc.d/init.d/e-smith-service root/etc/rc.d/rc7.d/S60lpd
-mkdir -p root/service
-ln -s /var/service/lpd root/service
 touch root/var/service/lpd/down
  
 %install
