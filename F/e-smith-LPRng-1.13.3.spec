@@ -2,7 +2,7 @@ Summary: e-smith server and gateway - LPRng module
 %define name e-smith-LPRng
 Name: %{name}
 %define version 1.13.3
-%define release 04
+%define release 05
 Version: %{version}
 Release: %{release}
 License: GPL
@@ -23,6 +23,9 @@ e-smith server and gateway software - LPRng module.
 Add printing features, using the LPRng package.
 
 %changelog
+* Wed Nov 30 2005 Gordon Rowell <gordonr@gormand.com.au> 1.13.3-05
+- Bump release number only
+
 * Mon Nov 21 2005 Charlie Brady <charlieb@e-smith.com>
 - [1.13.3-04]
 - Add /etc/atalk/papd.conf/20printers template (moved from e-smith-netatalk).
