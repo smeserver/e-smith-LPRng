@@ -2,7 +2,7 @@ Summary: e-smith server and gateway - LPRng module
 %define name e-smith-LPRng
 Name: %{name}
 %define version 1.13.3
-%define release 08
+%define release 09
 Version: %{version}
 Release: %{release}
 License: GPL
@@ -12,7 +12,6 @@ Source: %{name}-%{version}.tar.gz
 Patch0: e-smith-LPRng-1.13.3-02.mitel_patch
 Patch1: e-smith-LPRng-1.13.3-03.mitel_patch
 Patch2: e-smith-LPRng-1.13.3-04.mitel_patch
-Patch3: e-smith-LPRng-1.13.3-03.shutdownlinks.patch
 Packager: e-smith developers <bugs@e-smith.com>
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 Requires: e-smith-base, LPRng
@@ -25,6 +24,9 @@ e-smith server and gateway software - LPRng module.
 Add printing features, using the LPRng package.
 
 %changelog
+* Tue Dec 20 2005 Gordon Rowell <gordonr@gormand.com.au> 1.13.3-09
+- Revert last patch - not required for supervised services [SME: 351]
+
 * Tue Dec 20 2005 Gordon Rowell <gordonr@gormand.com.au> 1.13.3-08
 - And add lpd shutdown links [SME: 351]
 
@@ -499,7 +501,6 @@ Add printing features, using the LPRng package.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 %build
 perl createlinks
