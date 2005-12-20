@@ -2,7 +2,7 @@ Summary: e-smith server and gateway - LPRng module
 %define name e-smith-LPRng
 Name: %{name}
 %define version 1.13.3
-%define release 04
+%define release 08
 Version: %{version}
 Release: %{release}
 License: GPL
@@ -10,7 +10,9 @@ Vendor: Mitel Networks Corporation
 Group: Networking/Daemons
 Source: %{name}-%{version}.tar.gz
 Patch0: e-smith-LPRng-1.13.3-02.mitel_patch
-Patch1: e-smith-LPRng-1.13.3-04.mitel_patch
+Patch1: e-smith-LPRng-1.13.3-03.mitel_patch
+Patch2: e-smith-LPRng-1.13.3-04.mitel_patch
+Patch3: e-smith-LPRng-1.13.3-03.shutdownlinks.patch
 Packager: e-smith developers <bugs@e-smith.com>
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 Requires: e-smith-base, LPRng
@@ -23,6 +25,18 @@ e-smith server and gateway software - LPRng module.
 Add printing features, using the LPRng package.
 
 %changelog
+* Tue Dec 20 2005 Gordon Rowell <gordonr@gormand.com.au> 1.13.3-08
+- And add lpd shutdown links [SME: 351]
+
+* Tue Dec 20 2005 Gordon Rowell <gordonr@gormand.com.au> 1.13.3-07
+- Redo -06 with missed patch from -03 [SME: 351]
+
+* Tue Dec 20 2005 Gordon Rowell <gordonr@gormand.com.au> 1.13.3-06
+- Create rc?.d and /service symlinks [SME: 351]
+
+* Wed Nov 30 2005 Gordon Rowell <gordonr@gormand.com.au> 1.13.3-05
+- Bump release number only
+
 * Mon Nov 21 2005 Charlie Brady <charlieb@e-smith.com>
 - [1.13.3-04]
 - Add /etc/atalk/papd.conf/20printers template (moved from e-smith-netatalk).
@@ -484,6 +498,8 @@ Add printing features, using the LPRng package.
 %setup
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %build
 perl createlinks
