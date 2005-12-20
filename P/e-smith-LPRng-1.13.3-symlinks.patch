@@ -1,0 +1,13 @@
+diff -Nur -x '*.orig' -x '*.rej' e-smith-LPRng-1.13.3/createlinks mezzanine_patched_e-smith-LPRng-1.13.3/createlinks
+--- e-smith-LPRng-1.13.3/createlinks	2005-12-20 13:25:19.784838244 +1100
++++ mezzanine_patched_e-smith-LPRng-1.13.3/createlinks	2005-12-20 12:31:37.244524047 +1100
+@@ -55,3 +55,9 @@
+ 
+ templates2events("/etc/lpd/lpd.perms", $event);
+ templates2events("/etc/printcap", $event);
++
++safe_symlink("../init.d/supervise/lpd", "root/etc/rc.d/rc7.d/S60lpd");
++safe_symlink("../init.d/supervise/lpd", "root/etc/rc.d/rc6.d/K60lpd");
++safe_symlink("../init.d/supervise/lpd", "root/etc/rc.d/rc1.d/K60lpd");
++safe_symlink("../init.d/supervise/lpd", "root/etc/rc.d/rc0.d/K60lpd");
++
