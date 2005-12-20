@@ -2,7 +2,7 @@ Summary: e-smith server and gateway - LPRng module
 %define name e-smith-LPRng
 Name: %{name}
 %define version 1.13.3
-%define release 06
+%define release 04
 Version: %{version}
 Release: %{release}
 License: GPL
@@ -11,7 +11,6 @@ Group: Networking/Daemons
 Source: %{name}-%{version}.tar.gz
 Patch0: e-smith-LPRng-1.13.3-02.mitel_patch
 Patch1: e-smith-LPRng-1.13.3-04.mitel_patch
-Patch2: e-smith-LPRng-1.13.3-symlinks.patch
 Packager: e-smith developers <bugs@e-smith.com>
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 Requires: e-smith-base, LPRng
@@ -24,12 +23,6 @@ e-smith server and gateway software - LPRng module.
 Add printing features, using the LPRng package.
 
 %changelog
-* Tue Dec 20 2005 Gordon Rowell <gordonr@gormand.com.au> 1.13.3-06
-- Create rc?.d and /service symlinks [SME: 351]
-
-* Wed Nov 30 2005 Gordon Rowell <gordonr@gormand.com.au> 1.13.3-05
-- Bump release number only
-
 * Mon Nov 21 2005 Charlie Brady <charlieb@e-smith.com>
 - [1.13.3-04]
 - Add /etc/atalk/papd.conf/20printers template (moved from e-smith-netatalk).
@@ -491,16 +484,10 @@ Add printing features, using the LPRng package.
 %setup
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
 perl createlinks
 /sbin/e-smith/buildtests 30e-smith-LPRng
-touch root/var/service/lpd/down
-
-mkdir -p root/service
-ln -s /var/service/lpd root/service/lpd
-mkdir -p root/var/service/lpd/supervise
 touch root/var/service/lpd/down
  
 %install
@@ -508,9 +495,7 @@ rm -rf $RPM_BUILD_ROOT
 (cd root ; find . -depth -print | cpio -dump $RPM_BUILD_ROOT)
 rm -f %{name}-%{version}-%{release}-filelist
 /sbin/e-smith/genfilelist $RPM_BUILD_ROOT \
-    --dir '/var/service/lpd' 'attr(1755,root,root)' \
-    --file '/var/service/lpd/down' 'attr(0644,root,root)' \
-    --dir '/var/service/lpd/supervise' 'attr(0700,root,root)' \
+    --file /var/service/lpd/run 'attr(0755,root,root)' \
     > %{name}-%{version}-%{release}-filelist
 echo "%doc COPYING" >> %{name}-%{version}-%{release}-filelist
 
