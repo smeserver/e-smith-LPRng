@@ -2,7 +2,7 @@ Summary: e-smith server and gateway - LPRng module
 %define name e-smith-LPRng
 Name: %{name}
 %define version 1.14.0
-%define release 02
+%define release 03
 Version: %{version}
 Release: %{release}
 License: GPL
@@ -10,6 +10,7 @@ Vendor: Mitel Networks Corporation
 Group: Networking/Daemons
 Source: %{name}-%{version}.tar.gz
 Patch0: e-smith-LPRng-1.14.0-use_client_driver.patch
+Patch1: e-smith-LPRng-1.14.0-create_all.patch
 Packager: e-smith developers <bugs@e-smith.com>
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 Requires: e-smith-base, LPRng
@@ -22,6 +23,10 @@ e-smith server and gateway software - LPRng module.
 Add printing features, using the LPRng package.
 
 %changelog
+* Wed Apr 19 2006 Charlie Brady <charlie_brady@mitel.com> 1.14.0-03
+- Run printer-create during bootstrap-console-save, to ensure that
+  spools exist after restore. [SME: 1280]
+
 * Sat Apr  8 2006 Charlie Brady <charlieb@e-smith.com> 1.14.0-02
 - Respect UseClientDriver property in smb.conf template fragment.
   [SME: 1216]
@@ -504,6 +509,7 @@ Add printing features, using the LPRng package.
 %prep
 %setup
 %patch0 -p1
+%patch1 -p1
 
 %build
 perl createlinks

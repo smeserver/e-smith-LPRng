@@ -1,0 +1,78 @@
+diff -Nur -x '*.orig' -x '*.rej' e-smith-LPRng-1.14.0/createlinks mezzanine_patched_e-smith-LPRng-1.14.0/createlinks
+--- e-smith-LPRng-1.14.0/createlinks	2006-03-16 01:41:21.000000000 -0500
++++ mezzanine_patched_e-smith-LPRng-1.14.0/createlinks	2006-04-19 10:45:03.000000000 -0400
+@@ -55,6 +55,7 @@
+ 
+ templates2events("/etc/lpd/lpd.perms", $event);
+ templates2events("/etc/printcap", $event);
++event_link("printer-create", $event, "15");
+ 
+ # Make service statup symlinks
+ safe_symlink("../daemontools", "root/etc/rc.d/init.d/supervise/lpd");
+diff -Nur -x '*.orig' -x '*.rej' e-smith-LPRng-1.14.0/root/etc/e-smith/events/actions/printer-create mezzanine_patched_e-smith-LPRng-1.14.0/root/etc/e-smith/events/actions/printer-create
+--- e-smith-LPRng-1.14.0/root/etc/e-smith/events/actions/printer-create	2005-08-26 10:43:15.000000000 -0400
++++ mezzanine_patched_e-smith-LPRng-1.14.0/root/etc/e-smith/events/actions/printer-create	2006-04-19 10:46:45.000000000 -0400
+@@ -1,8 +1,8 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/perl
+ 
+ #----------------------------------------------------------------------
+ # copyright (C) 1999 Ip, Tak Hong
+-# copyright (C) 2000-2005 Mitel Networks Corporation
++# copyright (C) 2000-2006 Mitel Networks Corporation
+ #		
+ # This program is free software; you can redistribute it and/or modify
+ # it under the terms of the GNU General Public License as published by
+@@ -23,6 +23,7 @@
+ package esmith;
+ 
+ use strict;
++use warnings;
+ use Errno;
+ use esmith::util;
+ 
+@@ -31,25 +32,34 @@
+ 
+ my $event = $ARGV [0];
+ my $printerName = $ARGV [1];
++my @printers;
+ 
+ #------------------------------------------------------------
+ # Create the printer
+ #------------------------------------------------------------
+ 
+-die "Printername argument missing." unless defined ($printerName);
+-
+-my $p = $adb->get($printerName) || undef;
+-if (not defined $p || $p->prop('type') ne 'printer')
++if ($printerName)
++{
++    my $p = $adb->get($printerName);
++    die "Invalid printer $printerName; create printer failed.\n"
++	unless ($p and $p->prop('type') eq 'printer');
++    @printers = ($p);
++}
++else
+ {
+-    die "Invalid printer $printerName; create printer failed.\n";
++    @printers = $adb->printers;
+ }
+ 
+-unless (-d "/var/spool/lpd/$printerName")
++foreach (@printers)
+ {
+-    mkdir ("/var/spool/lpd/$printerName", 0700)
+-	or die "Could not create spool directory " .
+-	    "'/var/spool/lpd/$printerName'; $! : create printer failed.\n";
++    $printerName = $_->key;
++    unless (-d "/var/spool/lpd/$printerName")
++    {
++	mkdir ("/var/spool/lpd/$printerName", 0700)
++	    or die "Could not create spool directory " .
++		"'/var/spool/lpd/$printerName'; $! : create printer failed.\n";
++	esmith::util::chownFile ("lp", "lp", "/var/spool/lpd/$printerName");
++    }
+ }
+-esmith::util::chownFile ("lp", "lp", "/var/spool/lpd/$printerName");
+ 
+ exit (0);
