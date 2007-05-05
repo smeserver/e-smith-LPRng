@@ -4,10 +4,8 @@ Name: %{name}
 %define version 1.14.0
 %define release 5
 Version: %{version}
-Release: %smerelease %{release}
-Packager: %{_packager}
+Release: %{release}%{?dist}
 License: GPL
-Vendor: Mitel Networks Corporation
 Group: Networking/Daemons
 Source: %{name}-%{version}.tar.gz
 Patch0: e-smith-LPRng-1.14.0-use_client_driver.patch
@@ -16,6 +14,7 @@ Patch2: e-smith-LPRng-1.14.0-atalk.patch
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 Requires: e-smith-base, LPRng
 Requires: e-smith-lib >= 1.15.1-19
+BuildRequires: e-smith-devtools >= 1.13.1-03
 BuildArchitectures: noarch
 AutoReqProv: no
 
@@ -24,6 +23,9 @@ e-smith server and gateway software - LPRng module.
 Add printing features, using the LPRng package.
 
 %changelog
+* Sun Apr 29 2007 Shad L. Lords <slords@mail.com>
+- Clean up spec so package can be built by koji/plague
+
 * Fri Apr 06 2007 Shad L. Lords <slords@mail.com> 1.14.0-5
 - Remove duplicate papd.conf fragment. [SME: 1026]
 
