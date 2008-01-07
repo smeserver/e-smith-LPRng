@@ -1,0 +1,13 @@
+diff -Nur -x '*.orig' -x '*.rej' e-smith-LPRng-1.14.0/root/etc/e-smith/locale/en-us/etc/e-smith/web/functions/printers mezzanine_patched_e-smith-LPRng-1.14.0/root/etc/e-smith/locale/en-us/etc/e-smith/web/functions/printers
+--- e-smith-LPRng-1.14.0/root/etc/e-smith/locale/en-us/etc/e-smith/web/functions/printers	2003-06-24 15:09:29.000000000 -0600
++++ mezzanine_patched_e-smith-LPRng-1.14.0/root/etc/e-smith/locale/en-us/etc/e-smith/web/functions/printers	2008-01-07 08:32:43.000000000 -0700
+@@ -57,6 +57,9 @@
+         "canonbj" are valid choices, but "HP Laser Jet", 
+         "Canon BubbleJet", and
+         "HP JetDirect Printer" are not.
++        Avoid names and descriptions that contain these terms, 
++        "offline", "disabled", "down", "off", "waiting", "jam",
++        "paper", "error" and "responding". 
+       </trans>
+     </entry>
+     <entry>
