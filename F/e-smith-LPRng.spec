@@ -2,7 +2,7 @@ Summary: e-smith server and gateway - LPRng module
 %define name e-smith-LPRng
 Name: %{name}
 %define version 1.14.0
-%define release 5
+%define release 6
 Version: %{version}
 Release: %{release}%{?dist}
 License: GPL
@@ -11,6 +11,7 @@ Source: %{name}-%{version}.tar.gz
 Patch0: e-smith-LPRng-1.14.0-use_client_driver.patch
 Patch1: e-smith-LPRng-1.14.0-create_all.patch
 Patch2: e-smith-LPRng-1.14.0-atalk.patch
+Patch3: e-smith-LPRng-1.14.0.badTerms.patch
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 Requires: e-smith-base, LPRng
 Requires: e-smith-lib >= 1.15.1-19
@@ -23,6 +24,9 @@ e-smith server and gateway software - LPRng module.
 Add printing features, using the LPRng package.
 
 %changelog
+* Tue Jan 08 2008 Stephen Noble <support@dungog.net> 1.14.0-6
+- Warn not to use bad terms on Add Printer page [SME: 3667]
+
 * Sun Apr 29 2007 Shad L. Lords <slords@mail.com>
 - Clean up spec so package can be built by koji/plague
 
@@ -521,6 +525,7 @@ Add printing features, using the LPRng package.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 perl createlinks
