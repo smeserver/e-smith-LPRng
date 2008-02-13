@@ -2,7 +2,7 @@ Summary: e-smith server and gateway - LPRng module
 %define name e-smith-LPRng
 Name: %{name}
 %define version 1.14.0
-%define release 6
+%define release 7
 Version: %{version}
 Release: %{release}%{?dist}
 License: GPL
@@ -12,9 +12,11 @@ Patch0: e-smith-LPRng-1.14.0-use_client_driver.patch
 Patch1: e-smith-LPRng-1.14.0-create_all.patch
 Patch2: e-smith-LPRng-1.14.0-atalk.patch
 Patch3: e-smith-LPRng-1.14.0.badTerms.patch
+Patch4: e-smith-LPRng-1.14.0-tags2general.patch
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 Requires: e-smith-base, LPRng
 Requires: e-smith-lib >= 1.15.1-19
+Requires: e-smith-formmagick >= 1.4.0-9
 BuildRequires: e-smith-devtools >= 1.13.1-03
 BuildArchitectures: noarch
 AutoReqProv: no
@@ -24,6 +26,9 @@ e-smith server and gateway software - LPRng module.
 Add printing features, using the LPRng package.
 
 %changelog
+* Wed Feb 13 2008 Stephen Noble <support@dungog.net> 1.14.0-7
+- Remove <base> tags now in general [SME: 3920]
+
 * Tue Jan 08 2008 Stephen Noble <support@dungog.net> 1.14.0-6
 - Warn not to use bad terms on Add Printer page [SME: 3667]
 
@@ -526,6 +531,7 @@ Add printing features, using the LPRng package.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 perl createlinks
