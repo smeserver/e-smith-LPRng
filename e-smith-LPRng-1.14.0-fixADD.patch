@@ -1,0 +1,35 @@
+diff -Nur -x '*.orig' -x '*.rej' e-smith-LPRng-1.14.0/root/etc/e-smith/locale/en-us/etc/e-smith/web/functions/printers mezzanine_patched_e-smith-LPRng-1.14.0/root/etc/e-smith/locale/en-us/etc/e-smith/web/functions/printers
+--- e-smith-LPRng-1.14.0/root/etc/e-smith/locale/en-us/etc/e-smith/web/functions/printers	2008-03-12 09:22:52.000000000 -0600
++++ mezzanine_patched_e-smith-LPRng-1.14.0/root/etc/e-smith/locale/en-us/etc/e-smith/web/functions/printers	2008-03-12 09:22:21.000000000 -0600
+@@ -67,10 +67,6 @@
+       <trans>Brief description</trans>
+     </entry>
+     <entry>
+-      <base>CREATE</base>
+-      <trans>Add</trans>
+-    </entry>
+-    <entry>
+       <base>LOCAL_PRINTER_0</base>
+       <trans>Local printer port 0 (LPT1)</trans>
+     </entry>
+diff -Nur -x '*.orig' -x '*.rej' e-smith-LPRng-1.14.0/root/etc/e-smith/web/functions/printers mezzanine_patched_e-smith-LPRng-1.14.0/root/etc/e-smith/web/functions/printers
+--- e-smith-LPRng-1.14.0/root/etc/e-smith/web/functions/printers	2004-01-06 19:03:18.000000000 -0700
++++ mezzanine_patched_e-smith-LPRng-1.14.0/root/etc/e-smith/web/functions/printers	2008-03-12 09:22:13.000000000 -0600
+@@ -53,7 +53,7 @@
+             value="remote" validation="nonblank">
+             <label>LOCATION</label>
+         </field>
+-        <subroutine src="print_button('CREATE')"/>
++        <subroutine src="print_button('ADD')"/>
+     </page>
+ 
+     <page name="AddNetwork" pre-event="turn_off_buttons"
+@@ -67,7 +67,7 @@
+             <label>REMOTE_NAME_DESC</label>
+         </field>
+         <subroutine src="print_hidden_fields()"/>
+-        <subroutine src="print_button('CREATE')"/>
++        <subroutine src="print_button('ADD')"/>
+     </page>
+ 
+     <page name="Delete" pre-event="turn_off_buttons">
