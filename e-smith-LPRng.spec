@@ -2,7 +2,7 @@ Summary: e-smith server and gateway - LPRng module
 %define name e-smith-LPRng
 Name: %{name}
 %define version 1.14.0
-%define release 7
+%define release 8
 Version: %{version}
 Release: %{release}%{?dist}
 License: GPL
@@ -13,6 +13,7 @@ Patch1: e-smith-LPRng-1.14.0-create_all.patch
 Patch2: e-smith-LPRng-1.14.0-atalk.patch
 Patch3: e-smith-LPRng-1.14.0.badTerms.patch
 Patch4: e-smith-LPRng-1.14.0-tags2general.patch
+Patch5: e-smith-LPRng-1.14.0-fixADD.patch
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 Requires: e-smith-base, LPRng
 Requires: e-smith-lib >= 1.15.1-19
@@ -26,6 +27,9 @@ e-smith server and gateway software - LPRng module.
 Add printing features, using the LPRng package.
 
 %changelog
+* Wed Mar 12 2008 Shad L. Lords <slords@mail.com> 1.14.0-8
+- Cleanup CREATE/ADD tag mixup [SME: 4045]
+
 * Wed Feb 13 2008 Stephen Noble <support@dungog.net> 1.14.0-7
 - Remove <base> tags now in general [SME: 3920]
 
@@ -532,6 +536,7 @@ Add printing features, using the LPRng package.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %build
 perl createlinks
