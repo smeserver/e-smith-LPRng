@@ -29,7 +29,7 @@ Add printing features, using the LPRng package.
 
 %changelog
 * Sun Apr 27 2008 Jonathan Martens <smeserver-contribs@snetram.nl> 1.14.0-9
-- Add common <base> tags to e-smith-formmagick's general
+- Add common <base> tags to e-smith-formmagick's general [SME: 4291]
 
 * Wed Mar 12 2008 Shad L. Lords <slords@mail.com> 1.14.0-8
 - Cleanup CREATE/ADD tag mixup [SME: 4045]
