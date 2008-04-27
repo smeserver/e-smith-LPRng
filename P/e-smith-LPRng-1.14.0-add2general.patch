@@ -1,0 +1,45 @@
+diff -Nur -x '*.orig' -x '*.rej' e-smith-LPRng-1.14.0/root/etc/e-smith/locale/en-us/etc/e-smith/web/functions/printers mezzanine_patched_e-smith-LPRng-1.14.0/root/etc/e-smith/locale/en-us/etc/e-smith/web/functions/printers
+--- e-smith-LPRng-1.14.0/root/etc/e-smith/locale/en-us/etc/e-smith/web/functions/printers	2008-04-27 18:21:36.000000000 +0200
++++ mezzanine_patched_e-smith-LPRng-1.14.0/root/etc/e-smith/locale/en-us/etc/e-smith/web/functions/printers	2008-04-27 18:20:48.000000000 +0200
+@@ -20,18 +20,6 @@
+       <trans>Current List of printers</trans>
+     </entry>
+     <entry>
+-      <base>NAME</base>
+-      <trans>Name</trans>
+-    </entry>
+-    <entry>
+-      <base>DESCRIPTION</base>
+-      <trans>Description</trans>
+-    </entry>
+-    <entry>
+-      <base>LOCATION</base>
+-      <trans>Location</trans>
+-    </entry>
+-    <entry>
+       <base>REMOTE_ADDRESS</base>
+       <trans>Remote address</trans>
+     </entry>
+@@ -63,10 +51,6 @@
+       <trans>Printer name</trans>
+     </entry>
+     <entry>
+-      <base>BRIEF_DESCRIPTION</base>
+-      <trans>Brief description</trans>
+-    </entry>
+-    <entry>
+       <base>LOCAL_PRINTER_0</base>
+       <trans>Local printer port 0 (LPT1)</trans>
+     </entry>
+diff -Nur -x '*.orig' -x '*.rej' e-smith-LPRng-1.14.0/root/etc/e-smith/web/functions/printers mezzanine_patched_e-smith-LPRng-1.14.0/root/etc/e-smith/web/functions/printers
+--- e-smith-LPRng-1.14.0/root/etc/e-smith/web/functions/printers	2008-04-27 18:21:36.000000000 +0200
++++ mezzanine_patched_e-smith-LPRng-1.14.0/root/etc/e-smith/web/functions/printers	2008-04-27 18:19:23.000000000 +0200
+@@ -45,7 +45,7 @@
+             <label>PRINTER_NAME</label>
+         </field>
+         <field id="description" type="text" validation="nonblank, maxlength(32)">
+-            <label>BRIEF_DESCRIPTION</label>
++            <label>DESCRIPTION_BRIEF</label>
+         </field>
+         <field id="location" type="select" options="'lp0'=>'LOCAL_PRINTER_0',
+             'lp1'=>'LOCAL_PRINTER_1','lp2'=>'LOCAL_PRINTER_2','remote'=>'NET_PRINTER',
