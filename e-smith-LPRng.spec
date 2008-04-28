@@ -18,7 +18,7 @@ Patch6: e-smith-LPRng-1.14.0-add2general.patch
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 Requires: e-smith-base, LPRng
 Requires: e-smith-lib >= 1.15.1-19
-Requires: e-smith-formmagick >= 1.4.0-9
+Requires: e-smith-formmagick >= 1.4.0-12
 BuildRequires: e-smith-devtools >= 1.13.1-03
 BuildArchitectures: noarch
 AutoReqProv: no
@@ -29,7 +29,7 @@ Add printing features, using the LPRng package.
 
 %changelog
 * Sun Apr 27 2008 Jonathan Martens <smeserver-contribs@snetram.nl> 1.14.0-9
-- Add common <base> tags to e-smith-formmagick's general
+- Add common <base> tags to e-smith-formmagick's general [SME: 4291]
 
 * Wed Mar 12 2008 Shad L. Lords <slords@mail.com> 1.14.0-8
 - Cleanup CREATE/ADD tag mixup [SME: 4045]
