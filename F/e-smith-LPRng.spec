@@ -18,7 +18,7 @@ Patch6: e-smith-LPRng-1.14.0-add2general.patch
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 Requires: e-smith-base, LPRng
 Requires: e-smith-lib >= 1.15.1-19
-Requires: e-smith-formmagick >= 1.4.0-9
+Requires: e-smith-formmagick >= 1.4.0-12
 BuildRequires: e-smith-devtools >= 1.13.1-03
 BuildArchitectures: noarch
 AutoReqProv: no
