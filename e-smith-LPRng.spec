@@ -1,20 +1,15 @@
+# $Id: e-smith-LPRng.spec,v 1.7 2008/10/07 18:43:04 slords Exp $
+
 Summary: e-smith server and gateway - LPRng module
 %define name e-smith-LPRng
 Name: %{name}
-%define version 1.14.0
-%define release 9
+%define version 2.0.0
+%define release 1
 Version: %{version}
 Release: %{release}%{?dist}
 License: GPL
 Group: Networking/Daemons
 Source: %{name}-%{version}.tar.gz
-Patch0: e-smith-LPRng-1.14.0-use_client_driver.patch
-Patch1: e-smith-LPRng-1.14.0-create_all.patch
-Patch2: e-smith-LPRng-1.14.0-atalk.patch
-Patch3: e-smith-LPRng-1.14.0.badTerms.patch
-Patch4: e-smith-LPRng-1.14.0-tags2general.patch
-Patch5: e-smith-LPRng-1.14.0-fixADD.patch
-Patch6: e-smith-LPRng-1.14.0-add2general.patch
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 Requires: e-smith-base, LPRng
 Requires: e-smith-lib >= 1.15.1-19
@@ -28,6 +23,9 @@ e-smith server and gateway software - LPRng module.
 Add printing features, using the LPRng package.
 
 %changelog
+* Tue Oct 7 2008 Shad L. Lords <slords@mail.com> 2.0.0-1.sme
+- Roll new stream to separate sme7/sme8 trees [SME: 4633]
+
 * Sun Apr 27 2008 Jonathan Martens <smeserver-contribs@snetram.nl> 1.14.0-9
 - Add common <base> tags to e-smith-formmagick's general [SME: 4291]
 
@@ -535,13 +533,6 @@ Add printing features, using the LPRng package.
 
 %prep
 %setup
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
 
 %build
 perl createlinks
